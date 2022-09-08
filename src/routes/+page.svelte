@@ -2,6 +2,7 @@
   import { postApi, postLocal } from "$lib/api";
 
   let error = "";
+  let errorObj = {};
 
   async function externalRequest() {
     try {
@@ -12,7 +13,9 @@
       );
       console.log("Success!");
     } catch (err) {
+      console.log(err);
       error = err.body.message;
+      errorObj = err.body.errors;
     }
   }
 
@@ -25,7 +28,9 @@
       );
       console.log("Success!");
     } catch (err) {
+      console.log(err);
       error = err.body.message;
+      errorObj = err.body.errors;
     }
   }
 </script>
@@ -35,3 +40,5 @@
 <button on:click={internalRequest}>Make request via internal endpoint</button>
 
 <p>{error}</p>
+
+<pre>{JSON.stringify(errorObj)}</pre>

@@ -4,5 +4,6 @@
 declare namespace App {
   interface PageError {
     message: string;
+    errors?: { [field: string]: string[] };
   }
 }

@@ -64,6 +64,7 @@ async function send<T>({
 
     throw error(400, {
       message: reason || "Error when talking to the server. Please try again.",
+      errors: { foo: ["Just some dummy data"] },
     });
   }
 
